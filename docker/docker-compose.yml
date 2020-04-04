@@ -21,7 +21,14 @@ services:
         max-file: "10"
     restart: always
     ports:
-      - '80:80'
+      - '8081:80'
     tmpfs:
       /tmp
+    networks:
+      - notify-net
+
+networks:
+    notify-net:
+        driver: bridge
+
 
