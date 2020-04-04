@@ -1,0 +1,22 @@
+{
+
+    "123455677": {
+        "token": "1234123412341234",
+        "action": "line",
+        "api": {
+            "token": "123412341234234213421341234"
+        },
+        "enable": true,
+        "title" : "老司機存股俱樂部"
+    },
+
+    "sdafasdfsd": {
+        "token": "asdfasdfsadf",
+        "action": "slack",
+        "api": {
+            "channel": "stock",
+            "token": "asdfasdfsdfsadfasdfsadfqwerqwer"
+        },
+        "enable": true
+    }
+}

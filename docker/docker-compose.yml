@@ -1,0 +1,27 @@
+version: '2.2'
+services:
+  notify:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: notify
+    container_name: notify
+    # mem_limit: 1G
+    command: bash -c "/entrypoint.sh && bash "
+    volumes:
+       - ../:/home/notify
+    working_dir: /home/notify
+    tty: true
+    env_file:
+      - env.txt
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
+    restart: always
+    ports:
+      - '80:80'
+    tmpfs:
+      /tmp
+
