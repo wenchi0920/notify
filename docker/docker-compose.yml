@@ -21,7 +21,7 @@ services:
         max-file: "10"
     restart: always
     ports:
-      - '80:80'
+      - '8088:80'
     tmpfs:
       /tmp
 
