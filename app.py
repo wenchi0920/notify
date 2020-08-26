@@ -112,7 +112,11 @@ class NotiyApi(Resource, NotifyInterface):
         if not auth :
             return {
                 "res" : False,
-                "response" : NotifyInterface.returnMessage("ERROR: Unauthorized", 401)
+                "response" : NotifyInterface.returnMessage(
+                    self,
+                    msg="ERROR: Unauthorized",
+                    statusCode=401
+                )
             }
 
         authKey = auth['key']
@@ -121,19 +125,31 @@ class NotiyApi(Resource, NotifyInterface):
         if not self.config.get(authKey):
             return {
                 "res" : False,
-                "response" : NotifyInterface.returnMessage("ERROR: Forbidden[key]", 403)
+                "response" : NotifyInterface.returnMessage(
+                    self,
+                    msg="ERROR: Forbidden[key]",
+                    statusCode=403
+                )
             }
 
         elif self.config.get(authKey,{}).get("token", "") != authToken:
             return {
                 "res" : False,
-                "response" : NotifyInterface.returnMessage("ERROR: Forbidden[token]", 403)
+                "response" : NotifyInterface.returnMessage(
+                    self,
+                    msg="ERROR: Forbidden[token]",
+                    statusCode=403
+                )
             }
 
         elif not self.config.get(authKey, {}).get("enable", False) :
             return {
                 "res" : False,
-                "response" : NotifyInterface.returnMessage("ERROR: Forbidden[status]", 403)
+                "response" : NotifyInterface.returnMessage(
+                    self,
+                    msg="ERROR: Forbidden[status]",
+                    statusCode=403
+                )
             }
 
         return {

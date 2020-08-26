@@ -24,4 +24,11 @@ services:
       - '8088:80'
     tmpfs:
       /tmp
+    networks:
+      - notify-net
+
+networks:
+    notify-net:
+        driver: bridge
+
 
